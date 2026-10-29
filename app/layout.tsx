@@ -9,8 +9,8 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: {
-    default: "Alip Rahman, Fullstack & Mobile Developer",
-    template: "%s, by Alip Rahman",
+    default: "Alif Rahman - Portofolio",
+    template: "%s, by Alif Rahman",
   },
   description:
     "Professional Fullstack & Mobile Developer from Semarang, Indonesia. " +
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Alip Rahman" }],
   openGraph: {
-    title: "Alip Rahman, Fullstack & Mobile Developer",
+    title: "Alif Rahman - Portofolio",
     description:
       "Fast, reliable products, from scalable backends to the final pixel.",
     url: "https://aliprahman-dev.vercel.app/",
