@@ -1,0 +1,271 @@
+/* ============================================================================
+   GRIFFIN DESIGN SYSTEM — FOUNDATIONS
+   Source of truth for every visual decision in porto-hermes.
+   Derived from the design language of griffin.com, re-skinned modern:
+   warm near-black canvas, cream ink, Geist type system, uppercase mono
+   labels, and a scroll-driven dark ↔ light palette morph.
+   ========================================================================== */
+
+/* ------------------------------------------------------------------------
+   REGISTERED PROPERTIES — color tokens are registered as <color> so the
+   browser can INTERPOLATE them. The scroll-driven palette swap (dark ↔
+   light) animates every surface at once by transitioning these on :root.
+   ------------------------------------------------------------------------ */
+@property --ds-color-canvas {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #0c0c0b;
+}
+@property --ds-color-surface {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #141312;
+}
+@property --ds-color-surface-2 {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #1a1918;
+}
+@property --ds-color-surface-3 {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #262523;
+}
+@property --ds-color-ink {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #f9f5ef;
+}
+@property --ds-color-ink-muted {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #a39e96;
+}
+@property --ds-color-ink-subtle {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #857f77;
+}
+@property --ds-color-line {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: rgba(249, 245, 239, 0.1);
+}
+@property --ds-color-line-strong {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: rgba(249, 245, 239, 0.18);
+}
+@property --ds-color-accent {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #e6e1d9;
+}
+@property --ds-color-accent-ink {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #0c0c0b;
+}
+@property --ds-color-accent-hover {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #f9f5ef;
+}
+
+:root {
+  /* the morph — one declaration animates the entire design system */
+  transition:
+    --ds-color-canvas 0.7s var(--ds-ease-in-out),
+    --ds-color-surface 0.7s var(--ds-ease-in-out),
+    --ds-color-surface-2 0.7s var(--ds-ease-in-out),
+    --ds-color-surface-3 0.7s var(--ds-ease-in-out),
+    --ds-color-ink 0.7s var(--ds-ease-in-out),
+    --ds-color-ink-muted 0.7s var(--ds-ease-in-out),
+    --ds-color-ink-subtle 0.7s var(--ds-ease-in-out),
+    --ds-color-line 0.7s var(--ds-ease-in-out),
+    --ds-color-line-strong 0.7s var(--ds-ease-in-out),
+    --ds-color-accent 0.7s var(--ds-ease-in-out),
+    --ds-color-accent-ink 0.7s var(--ds-ease-in-out),
+    --ds-color-accent-hover 0.7s var(--ds-ease-in-out);
+
+  /* ---------------------------------------------------------------------
+     1. COLOR — "Ink on warm darkness" (the default dark skin)
+     --------------------------------------------------------------------- */
+  --ds-color-canvas: #0c0c0b;        /* page background            */
+  --ds-color-surface: #141312;       /* raised panels, cards       */
+  --ds-color-surface-2: #1a1918;     /* nested surfaces, inputs    */
+  --ds-color-surface-3: #262523;     /* hover states, chips        */
+
+  --ds-color-ink: #f9f5ef;           /* primary text — cream       */
+  --ds-color-ink-muted: #a39e96;     /* secondary text (AA 7.4:1)  */
+  --ds-color-ink-subtle: #857f77;    /* tertiary text (AA 4.8:1)   */
+
+  --ds-color-line: rgba(249, 245, 239, 0.10);   /* hairline borders  */
+  --ds-color-line-strong: rgba(249, 245, 239, 0.18);
+
+  --ds-color-accent: #e6e1d9;        /* primary button fill        */
+  --ds-color-accent-ink: #0c0c0b;    /* text on accent             */
+  --ds-color-accent-hover: #f9f5ef;  /* primary button hover       */
+
+  /* semantic aliases */
+  --ds-bg: var(--ds-color-canvas);
+  --ds-fg: var(--ds-color-ink);
+  --ds-muted: var(--ds-color-ink-muted);
+  --ds-border: var(--ds-color-line);
+
+  /* ---------------------------------------------------------------------
+     2. TYPOGRAPHY — "One family, three weights of voice"
+     Geist Sans for display and body (modern minimalist: tight tracking,
+     medium weight for statements), Geist Mono for uppercase labels.
+     --------------------------------------------------------------------- */
+    --ds-font-display: var(--font-geist-sans), -apple-system, "Segoe UI",
+      sans-serif;
+    --ds-font-body: var(--font-geist-sans), -apple-system, "Segoe UI",
+      sans-serif;
+    --ds-font-mono: var(--font-geist-mono), ui-monospace, "SF Mono", Menlo,
+      monospace;
+
+  /* display scale — fluid, tight */
+  --ds-text-display-xl: clamp(3rem, 8vw, 6.5rem);    /* 104px hero   */
+  --ds-text-display-lg: clamp(2.5rem, 5.5vw, 4.5rem);/* 72px         */
+  --ds-text-display-md: clamp(2rem, 4vw, 3rem);      /* 48px         */
+  --ds-text-display-sm: 1.75rem;                     /* 28px         */
+
+  /* body scale */
+  --ds-text-body-lg: 1.25rem;    /* 20px / 28px — lead paragraphs   */
+  --ds-text-body: 1rem;          /* 16px / 24px                     */
+  --ds-text-body-sm: 0.875rem;   /* 14px / 20px                     */
+
+  /* mono scale — always uppercase for labels */
+  --ds-text-label: 0.75rem;      /* 12px — eyebrows, nav, buttons   */
+  --ds-text-label-sm: 0.6875rem; /* 11px — meta, captions           */
+  --ds-text-code: 0.8125rem;     /* 13px — inline code, data        */
+
+  --ds-leading-display: 1.02;
+  --ds-leading-body: 1.5;
+  --ds-tracking-display: -0.02em;
+  --ds-tracking-label: 0.09em;
+  --ds-tracking-label-sm: 0.14em;
+
+  --ds-weight-light: 300;
+  --ds-weight-regular: 400;
+  --ds-weight-medium: 500;
+  --ds-weight-bold: 700;
+
+  /* ---------------------------------------------------------------------
+     3. SPACING — 4px base, editorial generosity
+     --------------------------------------------------------------------- */
+  --ds-space-1: 0.25rem;   /* 4  */
+  --ds-space-2: 0.5rem;    /* 8  */
+  --ds-space-3: 0.75rem;   /* 12 */
+  --ds-space-4: 1rem;      /* 16 — base gutter */
+  --ds-space-5: 1.5rem;    /* 24 */
+  --ds-space-6: 2rem;      /* 32 */
+  --ds-space-7: 3rem;      /* 48 */
+  --ds-space-8: 4rem;      /* 64 */
+  --ds-space-9: 6rem;      /* 96 — section rhythm */
+  --ds-space-10: 8rem;     /* 128 */
+  --ds-space-11: 12rem;    /* 192 — hero breathing room */
+
+  /* ---------------------------------------------------------------------
+     4. LAYOUT — one measure, one gutter
+     --------------------------------------------------------------------- */
+  --ds-container: 75rem;        /* 1200px max measure          */
+  --ds-container-narrow: 48rem; /* 768px prose                 */
+  --ds-gutter: var(--ds-space-4);
+  --ds-section-y: var(--ds-space-9);
+  --ds-nav-h: 4.5rem;
+
+  /* ---------------------------------------------------------------------
+     5. RADII — sharp edges, one round exception
+     Cards and panels stay architectural (2px). Buttons are pills.
+     --------------------------------------------------------------------- */
+  --ds-radius-sm: 2px;
+  --ds-radius-md: 4px;
+  --ds-radius-lg: 8px;
+  --ds-radius-pill: 9999px;
+
+  /* ---------------------------------------------------------------------
+     6. ELEVATION — darkness layered on darkness
+     Shadows stay near-black; borders do most of the separating.
+     --------------------------------------------------------------------- */
+  --ds-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --ds-shadow-md: 0 4px 16px rgba(0, 0, 0, 0.45);
+  --ds-shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.55);
+  --ds-shadow-glow: 0 0 0 1px var(--ds-color-line-strong);
+
+  /* ---------------------------------------------------------------------
+     7. MOTION — slow, weighted, never bouncy
+     --------------------------------------------------------------------- */
+  --ds-duration-fast: 150ms;
+  --ds-duration-base: 300ms;
+  --ds-duration-slow: 600ms;
+  --ds-ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ds-ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+
+  /* ---------------------------------------------------------------------
+     8. Z-INDEX SCALE
+     --------------------------------------------------------------------- */
+  --ds-z-base: 0;
+  --ds-z-sticky: 100;
+  --ds-z-nav: 200;
+  --ds-z-overlay: 300;
+  --ds-z-modal: 400;
+}
+
+/* ------------------------------------------------------------------------
+   UTILITY CLASSES — the vocabulary every component speaks
+   ------------------------------------------------------------------------ */
+.ds-label {
+  font-family: var(--ds-font-mono);
+  font-size: var(--ds-text-label);
+  font-weight: var(--ds-weight-regular);
+  text-transform: uppercase;
+  letter-spacing: var(--ds-tracking-label);
+  color: var(--ds-color-ink-muted);
+}
+
+.ds-display {
+  font-family: var(--ds-font-display);
+  font-weight: var(--ds-weight-medium);
+  line-height: var(--ds-leading-display);
+  letter-spacing: var(--ds-tracking-display);
+  color: var(--ds-color-ink);
+}
+
+.ds-rule {
+  border: 0;
+  border-top: 1px solid var(--ds-color-line);
+}
+
+/* reveal-on-scroll: weighted fade-up, driven by IntersectionObserver */
+.ds-reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity var(--ds-duration-slow) var(--ds-ease-out),
+    transform var(--ds-duration-slow) var(--ds-ease-out);
+  will-change: opacity, transform;
+}
+.ds-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ds-reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  /* ambient loops stop for reduced-motion users: aurora drift, skill
+     marquee, border trail, boot progress, status ping */
+  .after\:animate-aurora::after,
+  .animate-\[marquee_36s_linear_infinite\],
+  .border-trail-dot,
+  .animate-\[boot-slide_1\.2s_ease-in-out_infinite\],
+  .animate-ping {
+    animation: none !important;
+  }
+}

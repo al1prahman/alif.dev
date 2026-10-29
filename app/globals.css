@@ -1,0 +1,439 @@
+@import "tailwindcss";
+@import "../design-system/tokens.css";
+
+/* ------------------------------------------------------------------------
+   TAILWIND THEME — tokens become utilities.
+   --color-canvas → bg-canvas, --font-display → font-display, etc.
+   ------------------------------------------------------------------------ */
+@theme inline {
+  --color-canvas: var(--ds-color-canvas);
+  --color-surface: var(--ds-color-surface);
+  --color-surface-2: var(--ds-color-surface-2);
+  --color-surface-3: var(--ds-color-surface-3);
+  --color-ink: var(--ds-color-ink);
+  --color-muted: var(--ds-color-ink-muted);
+  --color-subtle: var(--ds-color-ink-subtle);
+  --color-line: var(--ds-color-line);
+  --color-line-strong: var(--ds-color-line-strong);
+  --color-accent: var(--ds-color-accent);
+  --color-accent-ink: var(--ds-color-accent-ink);
+
+  --font-display: var(--ds-font-display);
+  --font-body: var(--ds-font-body);
+  --font-mono: var(--ds-font-mono);
+
+  --text-display-xl: var(--ds-text-display-xl);
+  --text-display-lg: var(--ds-text-display-lg);
+  --text-display-md: var(--ds-text-display-md);
+  --text-display-sm: var(--ds-text-display-sm);
+  --text-body-lg: var(--ds-text-body-lg);
+  --text-body-sm: var(--ds-text-body-sm);
+  --text-label: var(--ds-text-label);
+  --text-label-sm: var(--ds-text-label-sm);
+  --text-code: var(--ds-text-code);
+
+  --radius-sm: var(--ds-radius-sm);
+  --radius-md: var(--ds-radius-md);
+  --radius-lg: var(--ds-radius-lg);
+  --radius-pill: var(--ds-radius-pill);
+
+  --shadow-sm: var(--ds-shadow-sm);
+  --shadow-md: var(--ds-shadow-md);
+  --shadow-lg: var(--ds-shadow-lg);
+
+  --ease-out: var(--ds-ease-out);
+  --ease-in-out: var(--ds-ease-in-out);
+
+  --animate-aurora: aurora 60s linear infinite;
+}
+
+/* ------------------------------------------------------------------------
+   BASE
+   ------------------------------------------------------------------------ */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    /* keep anchored sections clear of the fixed nav */
+    scroll-padding-top: 6rem;
+  }
+
+  body {
+    background-color: var(--ds-color-canvas);
+    color: var(--ds-color-ink);
+    font-family: var(--ds-font-body);
+    font-size: var(--ds-text-body);
+    line-height: var(--ds-leading-body);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background-color: var(--ds-color-ink);
+    color: var(--ds-color-canvas);
+  }
+
+  /* warm, thin scrollbar */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--ds-color-canvas);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--ds-color-surface-3);
+    border-radius: var(--ds-radius-pill);
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--ds-color-ink-subtle);
+  }
+
+  :focus-visible {
+    outline: 1px solid var(--ds-color-ink);
+    outline-offset: 3px;
+  }
+}
+
+/* ------------------------------------------------------------------------
+   COMPONENT CLASSES — the vocabulary, expressed once.
+   ------------------------------------------------------------------------ */
+@layer components {
+  .ds-label {
+    font-family: var(--ds-font-mono);
+    font-size: var(--ds-text-label);
+    text-transform: uppercase;
+    letter-spacing: var(--ds-tracking-label);
+    color: var(--ds-color-ink-muted);
+  }
+
+  /* hairline that fades at both ends — section separator */
+  .ds-rule-fade {
+    height: 1px;
+    background: linear-gradient(
+      to right,
+      transparent,
+      var(--ds-color-line-strong) 20%,
+      var(--ds-color-line-strong) 80%,
+      transparent
+    );
+  }
+
+  /* faint grid texture for hero / feature backgrounds */
+  .ds-grid-bg {
+    background-image:
+      linear-gradient(var(--ds-color-line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--ds-color-line) 1px, transparent 1px);
+    background-size: 96px 96px;
+    mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black, transparent);
+  }
+}
+
+/* ------------------------------------------------------------------------
+   AURORA — palette-aware light streaks. Built with color-mix on the
+   registered ink tokens, so the streaks morph WITH the theme swap
+   (cream light on darkness → dark light on paper).
+   ------------------------------------------------------------------------ */
+:root {
+  --aurora: repeating-linear-gradient(
+    100deg,
+    color-mix(in oklab, var(--ds-color-ink) 22%, transparent) 10%,
+    color-mix(in oklab, var(--ds-color-ink) 8%, transparent) 15%,
+    color-mix(in oklab, var(--ds-color-ink) 18%, transparent) 20%,
+    color-mix(in oklab, var(--ds-color-ink) 6%, transparent) 25%,
+    color-mix(in oklab, var(--ds-color-ink) 20%, transparent) 30%
+  );
+}
+
+/* ------------------------------------------------------------------------
+   GITHUB GRAPH — recolored server-side to the dark palette. Static now:
+   no theme morph, so no invert rule needed.
+   ------------------------------------------------------------------------ */
+
+/* ------------------------------------------------------------------------
+   WHITE CONTACT ORBIT BUTTON — ink/canvas tokens. Cream pill on darkness.
+   ------------------------------------------------------------------------ */
+.white-contact-orbit-button {
+  appearance: none;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  min-width: 12.5rem;
+  height: 3rem;
+  overflow: hidden;
+  border: 0;
+  border-radius: var(--ds-radius-pill);
+  padding: 0 0.5rem 0 1.25rem;
+  background: var(--ds-color-ink);
+  color: var(--ds-color-canvas);
+  font-family: var(--ds-font-mono);
+  font-size: var(--ds-text-label);
+  font-weight: var(--ds-weight-regular);
+  text-transform: uppercase;
+  letter-spacing: var(--ds-tracking-label);
+  cursor: pointer;
+  transition:
+    background-color 0.7s var(--ds-ease-in-out),
+    color 0.7s var(--ds-ease-in-out);
+}
+.white-contact-orbit-button-label {
+  position: relative;
+  z-index: 1;
+  margin-right: 1.15rem;
+  line-height: 1;
+  white-space: nowrap;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.white-contact-orbit-button-icon {
+  position: absolute;
+  right: 0.5rem;
+  display: grid;
+  width: 2.15rem;
+  height: 2.15rem;
+  place-items: center;
+  border-radius: 50%;
+  color: var(--ds-color-canvas);
+  transition: color 0.12s ease;
+}
+.white-contact-orbit-button-icon-surface {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: var(--ds-color-canvas);
+  transform: scale(0);
+  transform-origin: center;
+  transition:
+    transform 0.42s cubic-bezier(0.16, 1, 0.3, 1),
+    background-color 0.7s var(--ds-ease-in-out);
+}
+.white-contact-orbit-button-icon svg {
+  position: relative;
+  z-index: 1;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.white-contact-orbit-button:hover .white-contact-orbit-button-icon,
+.white-contact-orbit-button:focus-visible .white-contact-orbit-button-icon {
+  color: var(--ds-color-ink);
+  transition-delay: 0.08s;
+}
+.white-contact-orbit-button:hover .white-contact-orbit-button-icon-surface,
+.white-contact-orbit-button:focus-visible .white-contact-orbit-button-icon-surface {
+  transform: scale(1);
+}
+.white-contact-orbit-button:hover .white-contact-orbit-button-icon svg,
+.white-contact-orbit-button:focus-visible .white-contact-orbit-button-icon svg {
+  transform: rotate(-45deg);
+}
+.white-contact-orbit-button:focus-visible {
+  outline: 2px solid var(--ds-color-ink);
+  outline-offset: 4px;
+}
+
+/* ------------------------------------------------------------------------
+   WHAT'S NEW GLOW BUTTON — pointer-tracked glow rising from below.
+   The orange/blue pair becomes the site's own warm ramp: bone → ash →
+   charcoal, so it sits natively in both palettes.
+   ------------------------------------------------------------------------ */
+.whats-new-button {
+  --glow-x: 50%;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.75rem;
+  overflow: hidden;
+  border: 1px solid var(--ds-color-line-strong);
+  border-radius: var(--ds-radius-pill);
+  background: var(--ds-color-surface);
+  padding: 0 1.15rem;
+  color: var(--ds-color-ink);
+  font-family: var(--ds-font-mono);
+  font-size: var(--ds-text-label);
+  font-weight: var(--ds-weight-medium);
+  text-transform: uppercase;
+  letter-spacing: var(--ds-tracking-label);
+  cursor: pointer;
+  transition:
+    background-color 0.3s var(--ds-ease-out),
+    border-color 0.7s var(--ds-ease-in-out),
+    color 0.7s var(--ds-ease-in-out);
+}
+.whats-new-button:hover {
+  border-color: var(--ds-color-ink-muted);
+}
+.whats-new-content {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  white-space: nowrap;
+}
+.whats-new-glow {
+  position: absolute;
+  bottom: -108%;
+  width: 112%;
+  height: 180%;
+  border-radius: var(--ds-radius-pill);
+  filter: blur(23px);
+  opacity: 0.28;
+  transition:
+    left 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 0.3s ease;
+}
+.whats-new-glow-warm {
+  left: calc(var(--glow-x) - 78%);
+  background: linear-gradient(
+    145deg,
+    #f2ead9,
+    #b8ac97 43%,
+    #4a443c
+  );
+}
+.whats-new-glow-ash {
+  left: calc(var(--glow-x) - 30%);
+  background: linear-gradient(
+    145deg,
+    #e8e2d4,
+    #8f8a82 45%,
+    #2a2724
+  );
+}
+.whats-new-button:hover .whats-new-glow,
+.whats-new-button:focus-visible .whats-new-glow {
+  transform: translateY(-19px);
+  opacity: 1;
+}
+.whats-new-button:focus-visible {
+  outline: 2px solid var(--ds-color-ink-muted);
+  outline-offset: 3px;
+}
+
+/* ------------------------------------------------------------------------
+   PRICING SLIDE LINK — arrow slides in from the left, label shifts right.
+   ------------------------------------------------------------------------ */
+.pricing-slide {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  overflow: hidden;
+  border: 0;
+  background: transparent;
+  padding: 0;
+  color: var(--ds-color-ink);
+  font-family: var(--ds-font-mono);
+  font-size: var(--ds-text-label);
+  font-weight: var(--ds-weight-medium);
+  text-transform: uppercase;
+  letter-spacing: var(--ds-tracking-label);
+  line-height: 1;
+  cursor: pointer;
+  transition: color 0.3s var(--ds-ease-out);
+}
+.pricing-slide:hover {
+  color: var(--ds-color-ink-muted);
+}
+.pricing-slide-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.3rem;
+  height: 1.3rem;
+  transform: translateX(-150%);
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.pricing-slide-label {
+  transform: translateX(-1rem);
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.pricing-slide:hover .pricing-slide-icon,
+.pricing-slide:focus-visible .pricing-slide-icon {
+  transform: translateX(0);
+}
+.pricing-slide:hover .pricing-slide-label,
+.pricing-slide:focus-visible .pricing-slide-label {
+  transform: translateX(0);
+}
+.pricing-slide:focus-visible {
+  outline: 2px solid var(--ds-color-ink-muted);
+  outline-offset: 5px;
+}
+
+/* ------------------------------------------------------------------------
+   BORDER TRAIL — a glow bead orbits just OUTSIDE the card border.
+   The bead itself is invisible (transparent); only its soft halo shows,
+   so the card reads as if light is tracing its outer edge.
+   ------------------------------------------------------------------------ */
+@keyframes border-trail {
+  from {
+    offset-distance: 0%;
+  }
+  to {
+    offset-distance: 100%;
+  }
+}
+.border-trail-dot {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 10px;
+  height: 10px;
+  margin: -5px 0 0 -5px;
+  border-radius: 50%;
+  background: transparent;
+  box-shadow:
+    0 0 14px 4px color-mix(in oklab, var(--ds-color-ink) 50%, transparent),
+    0 0 40px 14px color-mix(in oklab, var(--ds-color-ink) 22%, transparent),
+    0 0 90px 30px color-mix(in oklab, var(--ds-color-ink) 9%, transparent);
+  offset-path: rect(-7px calc(100% + 7px) calc(100% + 7px) -7px round 19px);
+  offset-rotate: 0deg;
+  animation: border-trail 8s linear infinite;
+  will-change: offset-distance;
+}
+
+/* ------------------------------------------------------------------------
+   KEYFRAMES
+   ------------------------------------------------------------------------ */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* aurora — slow drifting gradient (magicui pattern, palette-aware) */
+@keyframes aurora {
+  from {
+    background-position:
+      50% 50%,
+      50% 50%;
+  }
+  to {
+    background-position:
+      350% 50%,
+      350% 50%;
+  }
+}
+
+@keyframes boot-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes boot-slide {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(400%);
+  }
+}
