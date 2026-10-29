@@ -1,4 +1,4 @@
-# porto-hermes
+# portofolio
 
 Portfolio of **Alip Rahman** — Fullstack & Mobile Developer, Semarang,
 Indonesia — rebuilt on a design system derived from the design language of
