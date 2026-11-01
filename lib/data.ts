@@ -45,6 +45,8 @@ export type Project = {
   role: string;
   status: string;
   image?: string;
+  github?: string;
+  gallery?: { src: string; caption: string }[];
 };
 
 export const projects: Project[] = [
@@ -68,6 +70,55 @@ export const projects: Project[] = [
     role: "Fullstack Developer",
     status: "Production",
     image: "/projects/preschool.jpg",
+  },
+  {
+    slug: "scrapedesk",
+    title: "ScrapeDesk: Multi-Source Scraping Platform",
+    category: "Web Application",
+    year: "2026",
+    summary:
+      "Scraping-as-a-service platform that turns any web page, JSON API, RSS feed, or sitemap into structured data through a dashboard or REST API, with scheduling, webhooks, and change detection built in.",
+    description:
+      "A multi-source data pipeline that turns the web into structured data without writing scraper code. Users define a job once — target URL, source type, and extraction rules — then run it on demand or on a cron schedule and consume results through the dashboard, CSV export, or a public REST API. The engine dispatches across four source types behind one interface: web pages rendered in a real browser with CSS selector, container-scoped, or LLM-powered extraction; JSON APIs mapped through dot-path field selectors with page, cursor, and link pagination; RSS/Atom feeds parsed into standard columns; and sitemap crawls that discover URLs through sitemap indexes and scrape each page. Everything around the engine is production plumbing: a pg-boss job queue living inside Postgres, automatic retry with exponential backoff, per-domain politeness delays, cookie injection and proxy rotation for login-walled and rate-limited targets, HMAC-signed webhooks, per-user daily quotas with Row Level Security isolation, and set-based change detection that diffs every run against the previous one.",
+    features: [
+      "Four source types in one pipeline: web pages, JSON APIs, RSS/Atom feeds, and sitemap crawls",
+      "Three extraction modes: CSS selectors, container-scoped fields, and LLM extraction via any OpenAI-compatible endpoint",
+      "API pagination by page number, cursor, or next link, with dot-path field mapping including array indexes",
+      "Cron scheduling with a self-terminating chain, plus HMAC-SHA256 signed webhooks on run completion",
+      "Automatic retry with exponential backoff and per-domain politeness delays",
+      "Cookie injection, round-robin proxy rotation, and headless stealth for protected targets",
+      "Set-based change detection diffing each run against the previous completed run",
+      "Post-extraction data transforms: regex, number coercion, replace, case, and template columns",
+      "Public REST API with hashed keys, per-user daily quota, and Row Level Security data isolation",
+      "Realtime run status, CSV/JSON export, OpenAPI spec, Docker Compose, and 78 unit tests in CI",
+    ],
+    stack: ["Next.js 15", "TypeScript", "Supabase", "PostgreSQL", "pg-boss", "Playwright", "Tailwind CSS"],
+    role: "Fullstack Developer",
+    status: "Production",
+    image: "/projects/scrapedesk-dash.png",
+    github: "https://github.com/al1prahman/scrape-desk",
+    gallery: [
+      {
+        src: "/projects/scrape-overview.png",
+        caption:
+          "Landing page stating the product promise, with entry points to the docs and signup.",
+      },
+      {
+        src: "/projects/scrape-job1.png",
+        caption:
+          "Job detail with run history, live status, and row counts, plus the source-type and extraction-mode selectors.",
+      },
+      {
+        src: "/projects/scrape-job2.png",
+        caption:
+          "Job configuration: pagination modes, infinite scroll, cookie injection, proxy rotation, cron schedule, and webhook URL.",
+      },
+      {
+        src: "/projects/scrape-api.png",
+        caption:
+          "API key management: plaintext shown once at creation, stored as SHA-256 hashes, revocable per key.",
+      },
+    ],
   },
   {
     slug: "internship-app",

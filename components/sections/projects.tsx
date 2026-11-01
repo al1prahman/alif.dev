@@ -22,7 +22,7 @@ export function ProjectsSection() {
     <Section
       id="projects"
       title="Projects I've built and shipped."
-      description="5 latest projects across web, mobile, and machine learning: administration systems, internship platforms, computer vision, and network operations tools."
+      description="6 latest projects across web, mobile, and machine learning: administration systems, internship platforms, scraping infrastructure, computer vision, and network operations tools."
     >
       <div className="grid gap-5 md:grid-cols-2">
         {projects.map((p, i) => (

@@ -134,6 +134,25 @@ export default async function ProjectPage({
                 <Badge key={s}>{s}</Badge>
               ))}
             </div>
+            {p.github && (
+              <div className="mt-8 border-t border-line pt-6">
+                <h2 className="ds-label mb-4 text-subtle">Source</h2>
+                <a
+                  href={p.github}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="group inline-flex items-center gap-2 font-mono text-body-sm text-ink transition-colors hover:text-muted"
+                >
+                  github.com/al1prahman/scrape-desk
+                  <span
+                    aria-hidden
+                    className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                  >
+                    ↗
+                  </span>
+                </a>
+              </div>
+            )}
             <div className="mt-8 border-t border-line pt-6">
               <Button href="/projects" variant="secondary" size="sm">
                 ← all projects
@@ -141,6 +160,31 @@ export default async function ProjectPage({
             </div>
           </aside>
         </div>
+
+        {/* gallery */}
+        {p.gallery && p.gallery.length > 0 && (
+          <div className="mt-20">
+            <h2 className="ds-label mb-8 text-subtle">Screenshots</h2>
+            <div className="space-y-10">
+              {p.gallery.map((shot) => (
+                <figure key={shot.src}>
+                  <div className="relative aspect-[16/9] overflow-hidden rounded-sm border border-line bg-surface">
+                    <Image
+                      src={shot.src}
+                      alt={shot.caption}
+                      fill
+                      sizes="(max-width: 1200px) 100vw, 75rem"
+                      className="object-cover"
+                    />
+                  </div>
+                  <figcaption className="mt-3 max-w-2xl text-body-sm text-muted">
+                    {shot.caption}
+                  </figcaption>
+                </figure>
+              ))}
+            </div>
+          </div>
+        )}
 
         {/* next project */}
         <Reveal>
