@@ -15,18 +15,19 @@ export function AboutSection() {
           <Reveal delay={100}>
             <div className="space-y-6 text-body-lg font-light leading-relaxed text-muted">
               <p>
-                I&apos;m a fullstack &amp; mobile developer based in{" "}
-                {profile.location}. I specialize in high-performance web
-                applications and cross-platform mobile experiences with
-                React, Laravel, and Flutter, owning the whole path from
-                database design and REST APIs to the final pixel.
+                I&apos;m a fullstack developer based in {profile.location}. I
+                specialize in web applications and database architecture, owning
+                the whole path from relational schema design and REST APIs to
+                the final pixel. I work across the stack with React, Laravel,
+                FastAPI, and PostgreSQL, and I care about products that are
+                fast, secure, and clean. Software that works as good as it
+                looks.
               </p>
               <p>
-                Three years of shipping: a preschool administration system,
-                an internship platform with a companion app, computer-vision
-                tooling, and network operations software. I care about
-                products that are fast, secure, and clean. Software that
-                works as good as it looks.
+                Three years of shipping: a preschool administration system, an
+                internship platform, computer-vision tooling, network
+                operations software, and an enterprise RAG knowledge platform.
+                I design the database, build the API, and ship the interface.
               </p>
             </div>
 
@@ -34,7 +35,7 @@ export function AboutSection() {
             <dl className="mt-10 grid grid-cols-2 gap-px bg-line sm:grid-cols-3">
               {[
                 { k: "Based in", v: profile.location },
-                { k: "Focus", v: "Fullstack & Mobile" },
+                { k: "Focus", v: "Fullstack / Web / Database" },
                 { k: "Timezone", v: profile.timezone },
               ].map((f) => (
                 <div key={f.k} className="bg-canvas p-5">

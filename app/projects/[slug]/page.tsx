@@ -143,7 +143,7 @@ export default async function ProjectPage({
                   rel="noreferrer"
                   className="group inline-flex items-center gap-2 font-mono text-body-sm text-ink transition-colors hover:text-muted"
                 >
-                  github.com/al1prahman/scrape-desk
+                  {p.github.replace("https://github.com/", "")}
                   <span
                     aria-hidden
                     className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"

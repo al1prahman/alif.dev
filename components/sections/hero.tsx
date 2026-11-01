@@ -80,10 +80,10 @@ export function Hero() {
                       <span key={w}>{w}</span>
                     ))}
                   </TextLoop>
-                  <span className="text-ink"> web or apps</span>
+                  <span className="text-ink"> web applications</span>
                 </p>
                 <p className="mt-4">
-                  from scalable backend architecture to the final pixel.
+                  from database schema to the final pixel.
                 </p>
               </div>
             </Reveal>
