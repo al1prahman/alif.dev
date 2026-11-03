@@ -1,6 +1,6 @@
 # portofolio
 
-Portfolio of **Alip Rahman** — Fullstack & Mobile Developer, Semarang,
+Portfolio of **Alip Rahman** — Backend Developer, Semarang,
 Indonesia — rebuilt on a design system derived from the design language of
 [griffin.com](https://www.griffin.com/).
 

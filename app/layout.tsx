@@ -13,16 +13,18 @@ export const metadata: Metadata = {
     template: "%s, by Alif Rahman",
   },
   description:
-    "Professional Fullstack & Mobile Developer from Semarang, Indonesia. " +
-    "High-performance web applications and cross-platform mobile experiences " +
-    "with React, Laravel, and Flutter.",
+    "Professional Backend Developer from Semarang, Indonesia. " +
+    "REST APIs, database architecture, and RAG pipelines " +
+    "with Python/FastAPI, PostgreSQL, Redis, and Qdrant.",
   keywords: [
     "Alip Rahman",
-    "Fullstack Developer",
-    "Mobile Developer",
-    "React",
-    "Laravel",
-    "Flutter",
+    "Backend Developer",
+    "Python",
+    "FastAPI",
+    "PostgreSQL",
+    "Redis",
+    "Qdrant",
+    "RAG",
     "Semarang",
     "Portfolio",
   ],
@@ -30,7 +32,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Alif Rahman - Portofolio",
     description:
-      "Fast, reliable products, from scalable backends to the final pixel.",
+      "Backend developer building APIs, databases, and RAG pipelines.",
     url: "https://aliprahman-dev.vercel.app/",
     siteName: "Alip Rahman",
     locale: "en_US",

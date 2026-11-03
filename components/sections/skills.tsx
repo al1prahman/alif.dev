@@ -13,7 +13,7 @@ export function SkillsSection() {
       index="03"
       eyebrow="Capabilities"
       title="The stack I build with."
-      description="What I reach for: mobile, frontend, backend, machine learning, and the tools in between."
+      description="What I reach for: backend, databases, AI/ML, and the tools in between."
     >
       {/* marquee strip */}
       <div className="relative mb-16 overflow-hidden border-y border-line py-5">
